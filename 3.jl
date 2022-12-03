@@ -1,9 +1,4 @@
-function item_priority(c)
-    if isuppercase(c)
-        return Int(c)-38
-    end
-    return Int(c)-96
-end
+item_priority(c) = isuppercase(c) ?  Int(c)-38 : Int(c)-96
 
 # Part 1
 sum(map(readlines("3.input")) do line
