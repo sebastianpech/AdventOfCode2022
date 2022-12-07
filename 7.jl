@@ -25,6 +25,7 @@ function folder_sizes(file)
                     directory_size[dir] = get(directory_size, dir, 0) + parse(Int, s)
                 end
             end
+        end
     end
     return directory_size
 end
@@ -36,11 +37,5 @@ sum(filter(<=(100000),collect(values(folder_sizes("7.input")))))
 # Part 2
 
 sizes = folder_sizes("7.input")
-available = 70000000
-required = 30000000
-unused = available-sizes["/"]
-to_del = required-unused
-
-cand = filter(>=(to_del),collect(values(sizes)))
-cand[argmax(to_del .- cand)]
+minimum(filter(>=(sizes["/"]-40000000),collect(values(sizes))))
 
